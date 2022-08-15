@@ -6,7 +6,6 @@ import Reducer from './Components/Reducer/Reducer';
 // import Context from './Components/Context/Context';
 // import CartExercise from './Components/CartExercise/CartExercise';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
-// import Storybook from './Components/Storybook/Storybook';
 
 function App() {
   return (
@@ -17,8 +16,6 @@ function App() {
       {/* <FifaTourney /> */}
       {/* <Class /> */}
       {/* <CartClassExercise /> */}
-      {/* <Storybook /> */}
-      <Reducer />
     </div>
   );
 }
