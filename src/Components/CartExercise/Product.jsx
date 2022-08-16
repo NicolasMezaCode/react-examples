@@ -1,12 +1,15 @@
 import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from './CartContext';
+import { ADD_TO_CART } from './actions';
 
 export default function Product(props) {
   const { product } = props;
-  const { addToCart } = useContext(CartContext);
+  const { dispatch } = useContext(CartContext);
   const handleClick = () => {
-    addToCart(product);
+    // addToCart(product);
+    // action = {type:ADD_TO_CART, payload:{product}}
+    dispatch({ type: ADD_TO_CART, payload: product });
   };
   return (
     <div className='component'>
