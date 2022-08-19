@@ -8,7 +8,7 @@ import './App.css';
 // import FifaTourney from './Components/FifaTourney/FifaTourney';
 // import Context from './Components/Context/Context';
 // import CartExercise from './Components/CartExercise/CartExercise';
-// import Redux from './Components/Redux/Redux';
+// // import Redux from './Components/Redux/Redux';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 // import Reducer from './Components/Reducer/Reducer';
 // import store from './Components/Redux/store';
