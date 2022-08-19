@@ -3,7 +3,6 @@ import './App.css';
 // import Reducer from './Components/Reducer/Reducer';
 // import CustomHook from './Components/CustomHook/CustomHook';
 // import Quiz from './Components/Quiz/Quiz';
-
 // import Class from './Components/Class/Class';
 // import Buttons from './Components/Buttons/Buttons';
 // import FifaTourney from './Components/FifaTourney/FifaTourney';
@@ -13,8 +12,10 @@ import './App.css';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 // import Reducer from './Components/Reducer/Reducer';
 // import store from './Components/Redux/store';
-import TodoRedux from './Components/ToDoRedux/TodoRedux';
-import store from './Components/ToDoRedux/store';
+// import TodoRedux from './Components/ToDoRedux/TodoRedux';
+// import store from './Components/ToDoRedux/store';
+import store from './Components/BlogRedux/app/store';
+import BlogRedux from './Components/BlogRedux/BlogRedux';
 function App() {
   return (
     <div className='App'>
@@ -30,8 +31,9 @@ function App() {
       {/* <Provider store={store}>
         <Redux />
       </Provider> */}
+      {/* <TodoRedux/> */}
       <Provider store={store}>
-      <TodoRedux/>
+      <BlogRedux/>
       </Provider>
     </div>
   );
