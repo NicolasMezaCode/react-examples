@@ -1,54 +1,39 @@
-import React,{useRef,useState} from 'react'
-import { useSelector,useDispatch } from 'react-redux/es/exports'
-import{ createPost,deletePost,editPost} from './slices/blogSlices'
-import { v4 as uuid } from 'uuid'
+import React,{useRef,useEffect} from 'react'
+import { useSelector,useDispatch } from 'react-redux'
+import{fetchPosts,postAPost} from './slices/blogSlices.js'
+import SinglePost from './singlePost.jsx'
 export default function BlogRedux() {
-    const [edit,setEdit]=useState(false)
     const dispatch=useDispatch()
     const posts=useSelector((state)=>state.blog.posts)
-    console.log(posts)
-    const inputPostRef=useRef();
-    const inputEditRef=useRef();
+    useEffect(() => {
+        dispatch(fetchPosts());
+      }, []);
+    const inputTitleRef=useRef();
+    const inputTextRef=useRef();
+    const inputEditTitle=useRef();
+    const inputEditText=useRef();
     const handleSubmit=(e)=>{
         e.preventDefault()
-        const id=uuid()
         const newPost={
-            id:id,
-            data:inputPostRef.current.value,
+            title:inputTitleRef.current.value,
+            body:inputTextRef.current.value,
+            userId:1,
         };
-        dispatch(createPost(newPost))
+        dispatch(postAPost(newPost))
     }
-    const handleEdit=()=>{
-        setEdit(!edit)
-    }
-    const editedMessage=(postId)=>{
-        
-            const editedPost={
-                id:postId,
-                text:inputEditRef.current.value,
-            }
-         dispatch(editPost(editedPost));
-         setEdit(!edit)
-    }
+
   return (
     <div>
         <h2>Blog Redux</h2>
         <form onSubmit={handleSubmit}>
-            <input type="text" ref={inputPostRef} />
+            <h3>Title</h3>
+            <input type="text" ref={inputTitleRef} />
+            <h3>Text</h3>
+            <input type="text" ref={inputTextRef} />
             <button>Submit</button>
         </form>
         <section>
-        {posts.map((post)=>(
-            <article key={post.id}>
-                <h2></h2>
-                <h3>{post.data}</h3>
-                <button onClick={()=>dispatch(deletePost(post.id))}>Delete</button>
-                <button onClick={handleEdit}>Edit</button>
-                <form  style={{display:edit ? 'flex': 'none'}}>
-                <input ref={inputEditRef}  type="text"/>
-                <button type='button' onClick={()=>editedMessage(post.id)}>Edit</button>
-                </form>
-            </article>
+        {posts.map((post)=>(<SinglePost inputEditText={inputEditText} post={post} inputEditTitle={inputEditTitle}/>
         ))}
         </section>
     </div>
