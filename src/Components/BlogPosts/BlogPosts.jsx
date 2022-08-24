@@ -6,6 +6,7 @@ import {
   postAPost,
   postAPostToFirebase,
 } from './features/posts/postsSlice';
+import {createUser} from './users/userSlice'
 import Post from './Post';
 
 export default function BlogPosts() {
@@ -13,6 +14,20 @@ export default function BlogPosts() {
   const dispatch = useDispatch();
   const titleRef = useRef();
   const bodyRef = useRef();
+  const emailInput=useRef();
+  const passwordInput=useRef();
+
+  const signupHandler=(e)=>{
+    e.preventDefault()
+    const email=emailInput.current.value;
+    const password=passwordInput.current.value;
+    const newUser={
+      email,password
+    };
+    dispatch(createUser(newUser));
+    console.log(newUser)
+  }
+
   useEffect(() => {
     dispatch(fetchPostsFromFirebase());
   }, []);
@@ -28,6 +43,13 @@ export default function BlogPosts() {
   return (
     <div>
       <h1>BlogPosts</h1>
+      <form onSubmit={signupHandler}  >
+        <label htmlFor="">Email</label>
+        <input type="text" ref={emailInput} />
+        <label htmlFor="" >Password</label>
+        <input type="text" ref={passwordInput} />
+        <button>signUp!!</button>
+      </form>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='title'>Title</label>
