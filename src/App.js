@@ -12,6 +12,7 @@ import BlogPosts from './Components/BlogPosts/BlogPosts';
 // // import Redux from './Components/Redux/Redux';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 // import Reducer from './Components/Reducer/Reducer';
+// import Redux from './Components/Redux/Redux';
 // import store from './Components/Redux/store';
 // import TodoRedux from './Components/ToDoRedux/TodoRedux';
 // import store from './Components/ToDoRedux/store';
